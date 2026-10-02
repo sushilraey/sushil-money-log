@@ -24,4 +24,4 @@ The old repository is not modified by this project.
 The JSON backup shape and mml.v1 key naming are preserved as the migration contract. Direct localStorage-to-AsyncStorage migration is not automatic because Android apps have different storage containers; import the v4 JSON backup to migrate user data between builds.
 
 ## Build
-Pushing to main runs the Android debug APK workflow and uploads app-debug.apk as a GitHub Actions artifact.
+Pushing to main runs the Android release APK workflow and uploads app-release.apk as a GitHub Actions artifact. The release variant bundles the JavaScript with the APK so a standalone install does not require Metro.
