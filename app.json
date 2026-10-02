@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "Sushil Money Log",
+    "slug": "sushil-money-log",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "android": {
+      "package": "com.sushilraey.sushilmoneylog",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "backgroundColor": "#0A1020"
+      }
+    },
+    "ios": {
+      "bundleIdentifier": "com.sushilraey.sushilmoneylog"
+    },
+    "plugins": [
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Allow Sushil Money Log to use Face ID."
+        }
+      ]
+    ]
+  }
+}
