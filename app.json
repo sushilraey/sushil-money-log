@@ -4,7 +4,6 @@
     "slug": "sushil-money-log",
     "version": "1.0.0",
     "orientation": "portrait",
-    "userInterfaceStyle": "automatic",
     "android": {
       "package": "com.sushilraey.sushilmoneylog",
       "versionCode": 1,
