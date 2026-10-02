@@ -1,4 +1,5 @@
 name: Android Debug APK
+# Fresh native debug build workflow
 
 on:
   push:
