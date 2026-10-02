@@ -1,1 +1,0 @@
-APK CI trigger: repository contains one Android debug workflow.
