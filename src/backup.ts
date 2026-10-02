@@ -2,7 +2,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as DocumentPicker from "expo-document-picker";
 import * as FileSystem from "expo-file-system/legacy";
 import * as Sharing from "expo-sharing";
-import type { AppState, BackupPayload } from "./types";
+import type { BackupPayload } from "./types";
+import type { AppState } from "./store";
 import { PREFIX, normalizeBackup } from "./store";
 
 export const SCHEMA_VERSION = 4;
