@@ -1,48 +1,39 @@
-name: Build Android APK
+name: Android Debug APK
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
   workflow_dispatch:
 
-concurrency:
-  group: android-debug-apk
-  cancel-in-progress: true
-
 jobs:
-  android:
+  build-debug-apk:
+    name: Build debug APK
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v5
-
-      - uses: actions/setup-node@v5
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 22.14.0
-          cache: npm
-
-      - uses: actions/setup-java@v5
+      - name: Setup Java
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "17"
-
-      - name: Install npm dependencies
+      - name: Install dependencies
         run: npm install
-
-      - name: Generate native Android project
+      - name: Generate Android project
         env:
           CI: "1"
         run: npx expo prebuild --platform android --clean
-
-      - name: TypeScript check
+      - name: Typecheck
         run: npm run typecheck
-
-      - name: Assemble debug APK
+      - name: Build debug APK
         working-directory: android
         run: chmod +x gradlew && ./gradlew assembleDebug --no-daemon --stacktrace
-
-      - name: Upload debug APK
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: sushil-money-log-debug-apk
