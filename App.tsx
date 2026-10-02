@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Alert, AppState, BackHandler, StatusBar, Text, View } from "react-native";
+import { Alert, AppState as RNAppState, BackHandler, StatusBar, Text, View } from "react-native";
 import * as LocalAuthentication from "expo-local-authentication";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Background, GlassCard, Glyph, PrimaryButton, usePalette, ui } from "./src/ui";
@@ -86,7 +86,7 @@ export default function App(){
 
   useEffect(()=>{
     let backgroundedAt:number|null=null;
-    const sub=AppState.addEventListener("change",next=>{
+    const sub=RNAppState.addEventListener("change",next=>{
       if(next==="background"||next==="inactive")backgroundedAt=Date.now();
       if(next==="active"&&backgroundedAt!==null){
         if(stateRef.current.settings.appLockEnabled&&Date.now()-backgroundedAt>=15000)void actions.lockNow();
