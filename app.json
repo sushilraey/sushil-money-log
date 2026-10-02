@@ -4,9 +4,12 @@
     "slug": "sushil-money-log",
     "version": "1.0.0",
     "orientation": "portrait",
+    "backgroundColor": "#080D1B",
+    "primaryColor": "#8C72FF",
     "android": {
       "package": "com.sushilraey.sushilmoneylog",
-      "versionCode": 1,
+      "versionCode": 2,
+      "backgroundColor": "#080D1B",
       "adaptiveIcon": {
         "backgroundColor": "#0A1020"
       }
@@ -20,7 +23,8 @@
         {
           "faceIDPermission": "Allow Sushil Money Log to use Face ID."
         }
-      ]
+      ],
+      "./plugins/withMoneyLogAndroid.js"
     ]
   }
 }

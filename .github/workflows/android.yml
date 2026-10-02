@@ -1,4 +1,4 @@
-name: Android Debug APK
+name: Android Release APK
 
 on:
   push:
@@ -6,37 +6,45 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-debug-apk:
-    name: Build debug APK
+  build-release-apk:
+    name: Build release APK
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22.14.0
+          cache: npm
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "17"
+
       - name: Install dependencies
         run: npm install
+
       - name: Generate Android project
         env:
           CI: "1"
         run: npx expo prebuild --platform android --clean
+
       - name: Typecheck
         run: npm run typecheck
-      - name: Build debug APK
+
+      - name: Build release APK
         working-directory: android
-        run: chmod +x gradlew && ./gradlew assembleDebug --no-daemon --stacktrace
-      - name: Upload APK artifact
+        run: chmod +x gradlew && ./gradlew assembleRelease --no-daemon --stacktrace
+
+      - name: Upload release APK
         uses: actions/upload-artifact@v4
         with:
-          name: sushil-money-log-debug-apk
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          name: sushil-money-log-release-apk
+          path: android/app/build/outputs/apk/release/app-release.apk
           if-no-files-found: error
           retention-days: 14
