@@ -315,5 +315,3 @@ export function RouteScreen({nav}:{nav:Nav}){
   return <LoanDetailScreen nav={nav} loanId={r.loanId}/>;
 }
 
-const local=StyleSheet.create({});
-const sStyle=StyleSheet.create({});
