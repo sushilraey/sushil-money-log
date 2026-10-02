@@ -8,6 +8,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: android-debug-apk
+  cancel-in-progress: true
+
 jobs:
   build-debug-apk:
     name: Build debug APK
